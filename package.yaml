@@ -1,0 +1,17 @@
+---
+- hosts: all
+  ignore_errors: yes
+  become: yes
+  tasks:
+
+    - name: Install tree
+      yum: 
+        name: tree
+        State: present
+      when: ansible_distribution == "CentOS"
+    
+    - name: Install tree
+      apt: 
+        name: tree
+        State: present
+      when: ansible_distribution == "Ubuntu"
